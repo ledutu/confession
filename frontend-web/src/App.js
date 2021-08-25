@@ -61,7 +61,7 @@ function App() {
   }, [stepNumber]);
 
   const callApi = async () => {
-    await axios.post('http://localhost:4000/api/sendMessage', {
+    await axios.post('http://api.reviewduthu.vn/api/sendMessage', {
       message: resultMessage,
     });
   }
