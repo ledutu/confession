@@ -5,6 +5,13 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background-image: url('./assets/images/background-letter-1.jpg');
+  background-size: cover;
+  /* width: fit-content; */
+}
+
+.card {
+  opacity: 0.8;
 }
 
 
