@@ -19,6 +19,12 @@ code {
   flex-direction: column;
 }
 
+.row-space {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .mt-10 {
   margin-top: 10px;
 }
