@@ -132,7 +132,7 @@ function App() {
     {
       id: 11,
       message: <div>
-        <p>Và hôm nay Tùng cũng tìm được người Tùng muốn bảo vệ, chăm</p>
+        <p>Và Tùng cũng tìm được người Tùng muốn bảo vệ, chăm</p>
         <p>sóc và chở che rồi. Nguyên cho Tùng cơ hội để được che chở,</p>
         <p>chăm sóc, và bảo vệ Nguyên nha.</p>
         <p>Có Tùng ở đây rồi, nên Nguyên đừng sợ gì hết nữa nha.</p>
