@@ -13,8 +13,8 @@ const RootNavigator = () => {
     <NavigationContainer>
       <StatusBar translucent backgroundColor="transparent" />
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name={routes.AUTH_CONTAINER} component={Auth} />
         <Stack.Screen name={routes.BOTTOM_TAB} component={Bottom} />
+        <Stack.Screen name={routes.AUTH_CONTAINER} component={Auth} />
       </Stack.Navigator>
     </NavigationContainer>
   );
