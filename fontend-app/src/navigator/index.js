@@ -1,5 +1,6 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {Loading} from 'components';
 import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {useDispatch} from 'react-redux';
@@ -40,6 +41,7 @@ const RootNavigator = () => {
         <Stack.Screen name={routes.AUTH_CONTAINER} component={Auth} />
         <Stack.Screen name={routes.COMMON_CONTAINER} component={Common} />
       </Stack.Navigator>
+      <Loading />
     </NavigationContainer>
   );
 };

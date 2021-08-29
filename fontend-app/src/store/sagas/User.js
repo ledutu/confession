@@ -29,11 +29,14 @@ function* login(payload) {
 
 function* getUserInformation(payload) {
   try {
+    yield put({type: actions.OPEN_MODAL_LOAD});
     const res = yield api.get('user/me', payload.params);
     yield put({type: _onSuccess(actions.GET_USER_INFORMATION), data: res});
   } catch (error) {
     yield handleError(error);
     yield put({type: _onFail(actions.GET_USER_INFORMATION)});
+  } finally {
+    yield put({type: actions.CLOSE_MODAL_LOAD});
   }
 }
 
