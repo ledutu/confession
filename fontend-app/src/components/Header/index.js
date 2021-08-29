@@ -5,7 +5,13 @@ import {colors} from 'utils';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
-const Header = ({title = 'Header', canGoBack = true, onGoBack}) => {
+const Header = ({
+  title = 'Header',
+  canGoBack = true,
+  isLineBottom = false,
+  isSetting = false,
+  onGoBack,
+}) => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
 
@@ -14,7 +20,11 @@ const Header = ({title = 'Header', canGoBack = true, onGoBack}) => {
   };
 
   return (
-    <Box pt={top} bg={colors.primary}>
+    <Box
+      pt={top}
+      bg={colors.primary}
+      borderBottomWidth={isLineBottom ? 2 : 0}
+      borderColor={colors.primaryText}>
       {canGoBack && (
         <Button
           top={top}
@@ -39,6 +49,20 @@ const Header = ({title = 'Header', canGoBack = true, onGoBack}) => {
           {title}
         </Text>
       </Box>
+      {isSetting && (
+        <Button
+          top={top}
+          right={0}
+          bottom={0}
+          px={3}
+          position="absolute"
+          backgroundColor="transparent"
+          startIcon={
+            <Icon as={AntDesign} name="setting" size={7} color={colors.blue} />
+          }
+          onPress={_onGoBack}
+        />
+      )}
     </Box>
   );
 };
