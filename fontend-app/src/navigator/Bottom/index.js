@@ -1,7 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Text} from 'native-base';
+import {icons} from 'assets';
+import {Image} from 'native-base';
 import * as React from 'react';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import {bottom} from 'screens';
 import {colors, routes} from 'utils';
 
@@ -13,28 +14,32 @@ const Bottom = () => {
       screenOptions={({route}) => ({
         headerShown: false,
         tabBarActiveTintColor: colors.tomato,
-        tabBarInactiveTintColor: colors.gray,
-        tabBarLabel: ({color}) => {
-          const labels = {
-            [routes.HOME_SCREEN]: 'Trang chủ',
-            [routes.NOTIFICATION_SCREEN]: 'Thông báo',
-            [routes.PROFILE_SCREEN]: 'Tài khoản',
+        tabBarInactiveTintColor: colors.primaryText,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          borderTopWidth: 1.5,
+          height: 60,
+          backgroundColor: colors.primary,
+          borderTopColor: colors.primaryText,
+        },
+        tabBarIcon: ({focused, color}) => {
+          const icon = {
+            [routes.HOME_SCREEN]: icons.home,
+            [routes.NOTIFICATION_SCREEN]: icons.bell,
+            [routes.PROFILE_SCREEN]: icons.user,
+          };
+          const icon_filled = {
+            [routes.HOME_SCREEN]: icons.home_filled,
+            [routes.NOTIFICATION_SCREEN]: icons.bell_filled,
+            [routes.PROFILE_SCREEN]: icons.user_filled,
           };
           return (
-            <Text fontSize="xs" color={color}>
-              {labels[route.name]}
-            </Text>
+            <Image
+              size={7}
+              style={{tintColor: focused ? null : color}}
+              source={focused ? icon_filled[route.name] : icon[route.name]}
+            />
           );
-        },
-        tabBarIcon: ({focused, color, size}) => {
-          let iconName;
-          const icons = {
-            [routes.HOME_SCREEN]: 'home',
-            [routes.NOTIFICATION_SCREEN]: 'notifications',
-            [routes.PROFILE_SCREEN]: 'person',
-          };
-          iconName = `${icons[route.name]}${focused ? '' : '-outline'}`;
-          return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}>
       <Tab.Screen

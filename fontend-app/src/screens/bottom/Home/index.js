@@ -1,13 +1,8 @@
-import {Header} from 'components';
-import {Box} from 'native-base';
+import {Container} from 'components';
 import React from 'react';
 
 const HomeScreen = () => {
-  return (
-    <Box flex={1}>
-      <Header title="Trang chủ" />
-    </Box>
-  );
+  return <Container title="Trang chủ" canGoBack={false} />;
 };
 
 export default HomeScreen;
