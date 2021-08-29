@@ -9,12 +9,31 @@ import {
 } from 'native-base';
 import React from 'react';
 import {Platform} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import actions from 'store/actions';
 import {colors} from 'utils';
 import InputLabel from './components/InputLabel';
 
 const SettingProfile = () => {
+  const dispatch = useDispatch();
+  const dInformation = useSelector(state => state.userInfo.data);
+  const iLogout = useSelector(state => state.logout.isLoading);
+
+  const {email, profile} = dInformation || {};
+
+  const _onLogout = () => {
+    dispatch({type: actions.LOGOUT_ACCOUNT});
+  };
+
   return (
-    <Container title="Cài đặt" nameIcon="close" rightTitle="Hoàn tất">
+    <Container
+      title="Cài đặt"
+      nameIcon="close"
+      renderRight={() => (
+        <Text bold fontSize="md" color={colors.blue}>
+          Hoàn tất
+        </Text>
+      )}>
       <KeyboardAvoidingView
         flex={1}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -26,11 +45,15 @@ const SettingProfile = () => {
             <Box alignItems="center">
               <Avatar
                 size="lg"
-                source={{
-                  uri: 'https://pbs.twimg.com/profile_images/1188747996843761665/8CiUdKZW_400x400.jpg',
-                }}>
+                source={
+                  profile?.image
+                    ? {
+                        uri: profile?.image,
+                      }
+                    : undefined
+                }>
                 <Text fontSize="xl" bold color={colors.white}>
-                  V
+                  {!profile?.image && profile?.full_name?.substring(0, 1)}
                 </Text>
               </Avatar>
               <Text fontSize="md" bold color={colors.blue} mt={2}>
@@ -38,11 +61,12 @@ const SettingProfile = () => {
               </Text>
             </Box>
           </Button>
-          <InputLabel label="Tên" value="Van loi" />
-          <InputLabel label="Tên đăng nhập" value="vanloi11" />
-          <InputLabel label="Email" value="dvl.codervn@gmail.com" />
+          <InputLabel label="Tên" value={profile?.full_name} />
+          <InputLabel label="Email" value={email} />
           <InputLabel label="Mật khẩu" value="dvlcodervn" isPass />
           <Button
+            isLoading={iLogout}
+            onPress={_onLogout}
             borderWidth={2}
             borderColor={colors.primaryText}
             borderRadius={15}
