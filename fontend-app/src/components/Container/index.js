@@ -15,7 +15,7 @@ const Container = ({children, bg = colors.primary, ...rest}) => {
         bg={bg}
         flex={1}
         padding={3}
-        paddingBottom={Platform.OS === 'ios' ? bottom : 12}>
+        paddingBottom={Platform.OS === 'ios' ? bottom : 3}>
         {children}
       </Box>
     </Box>
