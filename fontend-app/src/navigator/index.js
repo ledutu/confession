@@ -26,6 +26,7 @@ const RootNavigator = () => {
               user,
             },
           });
+          dispatch({type: actions.GET_USER_INFORMATION});
         }
       });
     });

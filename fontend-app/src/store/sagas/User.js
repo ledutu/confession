@@ -27,6 +27,17 @@ function* login(payload) {
   }
 }
 
+function* getUserInformation(payload) {
+  try {
+    const res = yield api.get('user/me', payload.params);
+    yield put({type: _onSuccess(actions.GET_USER_INFORMATION), data: res});
+  } catch (error) {
+    yield handleError(error);
+    yield put({type: _onFail(actions.GET_USER_INFORMATION)});
+  }
+}
+
 export default function* User() {
   yield takeLatest(actions.LOGIN_ACCOUNT, login);
+  yield takeLatest(actions.GET_USER_INFORMATION, getUserInformation);
 }

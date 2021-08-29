@@ -1,5 +1,6 @@
 export default {
   LOGIN_ACCOUNT: 'LOGIN_ACCOUNT',
+  GET_USER_INFORMATION: 'GET_USER_INFORMATION',
 };
 
 export const _onSearch = action => {
