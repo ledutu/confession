@@ -1,6 +1,7 @@
 import routes from './routes';
 import colors from './colors';
 import api from './api';
-import {queryStringBody} from './helper';
+import storageKey from './storageKey';
+import {queryStringBody, storage, handleError} from './helper';
 
-export {routes, colors, api, queryStringBody};
+export {routes, colors, api, storageKey, queryStringBody, storage, handleError};

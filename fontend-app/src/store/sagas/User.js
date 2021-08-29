@@ -1,5 +1,5 @@
 import actions, {_onFail, _onSuccess} from 'store/actions';
-import {api, queryStringBody} from 'utils';
+import {api, handleError, queryStringBody} from 'utils';
 import {put, takeLatest} from 'redux-saga/effects';
 
 function* login(payload) {
@@ -9,9 +9,10 @@ function* login(payload) {
       queryStringBody(payload.body),
       payload.params,
     );
-    yield put({type: _onSuccess(actions.LOGIN_ACCOUNT), data: res.data});
+    yield put({type: _onSuccess(actions.LOGIN_ACCOUNT), data: res});
   } catch (error) {
     yield put({type: _onFail(actions.LOGIN_ACCOUNT)});
+    handleError(error);
   }
 }
 

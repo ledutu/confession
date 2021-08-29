@@ -30,7 +30,6 @@ const FormSignIn = () => {
   };
 
   const _onConfirm = () => {
-    console.log('confirm');
     dispatch({
       type: actions.LOGIN_ACCOUNT,
       body: {
@@ -80,7 +79,7 @@ const FormSignIn = () => {
       <Button
         onPress={_onConfirm}
         isDisabled={disabled}
-        isLoading={false}
+        isLoading={rLogin.isLoading}
         mt={6}
         borderRadius={15}
         bg={disabled ? colors.lightPrimary : colors.blue}

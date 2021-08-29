@@ -1,8 +1,7 @@
 import axios from 'axios';
-import Config from 'react-native-config';
 import store from 'store';
 
-axios.defaults.baseURL = Config.API_SERVER_URL;
+axios.defaults.baseURL = 'http://cfs-api.reviewduthu.vn/api/';
 
 const getDataBody = config => {
   let data = '';
@@ -68,7 +67,7 @@ axios.interceptors.response.use(
 
 export default class HttpService {
   static generateHeader(headers) {
-    const token = store.getState()?.login?.data;
+    const token = store.getState()?.login?.data?.access_token;
     let options = {
       'Content-Type': headers || 'application/x-www-form-urlencoded',
       Accept: 'application/json',

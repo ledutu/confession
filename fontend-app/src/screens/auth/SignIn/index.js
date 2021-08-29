@@ -1,6 +1,7 @@
 import {Container} from 'components';
-import {Box, Button, Text} from 'native-base';
+import {Box, Button, KeyboardAvoidingView, ScrollView, Text} from 'native-base';
 import React from 'react';
+import {Platform} from 'react-native';
 import {colors} from 'utils';
 import FormSignIn from './components/FormSignIn';
 import LoginSocial from './components/LoginSocial';
@@ -9,14 +10,19 @@ const SignIn = () => {
   return (
     <Container title="Đăng nhập">
       <Box flex={1}>
-        <FormSignIn />
-        <Button
-          mt={6}
-          bg="transparent"
-          _pressed={{bg: 'transparent'}}
-          _text={{color: colors.blue, fontWeight: '700'}}>
-          QUÊN MẬT KHẨU
-        </Button>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <FormSignIn />
+            <Button
+              mt={6}
+              bg="transparent"
+              _pressed={{bg: 'transparent'}}
+              _text={{color: colors.blue, fontWeight: '700'}}>
+              QUÊN MẬT KHẨU
+            </Button>
+          </ScrollView>
+        </KeyboardAvoidingView>
       </Box>
       <Box>
         <LoginSocial />
