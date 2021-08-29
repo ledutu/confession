@@ -11,6 +11,7 @@ const Header = ({
   isLineBottom = false,
   isSetting = false,
   nameIcon = 'arrowleft',
+  rightTitle,
   onGoBack,
 }) => {
   const {top} = useSafeAreaInsets();
@@ -56,7 +57,7 @@ const Header = ({
           {title}
         </Text>
       </Box>
-      {isSetting && (
+      {(isSetting || rightTitle) && (
         <Button
           top={top}
           right={0}
@@ -65,10 +66,22 @@ const Header = ({
           position="absolute"
           backgroundColor="transparent"
           startIcon={
-            <Icon as={AntDesign} name="setting" size={7} color={colors.blue} />
+            isSetting && (
+              <Icon
+                as={AntDesign}
+                name="setting"
+                size={7}
+                color={colors.blue}
+              />
+            )
           }
-          onPress={_onSetting}
-        />
+          onPress={_onSetting}>
+          {rightTitle && (
+            <Text bold fontSize="md" color={colors.blue}>
+              {rightTitle}
+            </Text>
+          )}
+        </Button>
       )}
     </Box>
   );
