@@ -26,11 +26,12 @@ const SettingProfile = () => {
             <Box alignItems="center">
               <Avatar
                 size="lg"
-                _text={{color: colors.white}}
                 source={{
                   uri: 'https://pbs.twimg.com/profile_images/1188747996843761665/8CiUdKZW_400x400.jpg',
                 }}>
-                V
+                <Text fontSize="xl" bold color={colors.white}>
+                  V
+                </Text>
               </Avatar>
               <Text fontSize="md" bold color={colors.blue} mt={2}>
                 Thay đổi ảnh đại diện
@@ -41,6 +42,15 @@ const SettingProfile = () => {
           <InputLabel label="Tên đăng nhập" value="vanloi11" />
           <InputLabel label="Email" value="dvl.codervn@gmail.com" />
           <InputLabel label="Mật khẩu" value="dvlcodervn" isPass />
+          <Button
+            borderWidth={2}
+            borderColor={colors.primaryText}
+            borderRadius={15}
+            mt={6}
+            variant="outline"
+            _pressed={{bg: 'transparent'}}>
+            ĐĂNG XUẤT
+          </Button>
         </ScrollView>
       </KeyboardAvoidingView>
     </Container>
