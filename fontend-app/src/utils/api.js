@@ -101,7 +101,6 @@ export default class HttpService {
 
   //TODO: POST
   static async post(url, body, params) {
-    console.log(url);
     try {
       return await axios
         .post(url, body, {

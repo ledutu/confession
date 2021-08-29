@@ -4,7 +4,6 @@ import {put, takeLatest} from 'redux-saga/effects';
 
 function* login(payload) {
   try {
-    console.log('sagas');
     const res = yield api.post(
       'auth/login',
       queryStringBody(payload.body),
