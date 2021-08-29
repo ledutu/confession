@@ -1,4 +1,4 @@
-import {_onFail, _onSearch, _onSuccess, _onUnmount} from '@redux/actions';
+import {_onFail, _onSearch, _onSuccess, _onUnmount} from 'store/actions';
 import {
   stateDefault,
   stateDevice,

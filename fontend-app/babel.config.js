@@ -12,7 +12,7 @@ module.exports = {
           hooks: './src/hooks',
           i18n: './src/i18n',
           navigator: './src/navigator',
-          redux: './src/redux',
+          store: './src/store',
           screens: './src/screens',
           utils: './src/utils',
         },

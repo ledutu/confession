@@ -1,4 +1,4 @@
-import actions, {_onFail, _onSuccess} from 'redux/actions';
+import actions, {_onFail, _onSuccess} from 'store/actions';
 import {api} from 'utils';
 import {put, takeLatest} from 'redux-saga/effects';
 

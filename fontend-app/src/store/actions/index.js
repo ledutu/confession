@@ -2,6 +2,9 @@ export default {
   LOGIN_ACCOUNT: 'LOGIN_ACCOUNT',
 };
 
+export const _onSearch = action => {
+  return action + '_SEARCH';
+};
 export const _onSuccess = action => {
   return action + '_SUCCESS';
 };
