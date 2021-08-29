@@ -1,7 +1,7 @@
 import {Box, Button, Icon, Text} from 'native-base';
 import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {colors} from 'utils';
+import {colors, routes} from 'utils';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 
@@ -10,6 +10,7 @@ const Header = ({
   canGoBack = true,
   isLineBottom = false,
   isSetting = false,
+  nameIcon = 'arrowleft',
   onGoBack,
 }) => {
   const {top} = useSafeAreaInsets();
@@ -17,6 +18,12 @@ const Header = ({
 
   const _onGoBack = () => {
     onGoBack ? onGoBack() : navigation.goBack();
+  };
+
+  const _onSetting = () => {
+    navigation.navigate(routes.COMMON_CONTAINER, {
+      screen: routes.SETTING_PROFILE_SCREEN,
+    });
   };
 
   return (
@@ -36,7 +43,7 @@ const Header = ({
           startIcon={
             <Icon
               as={AntDesign}
-              name="arrowleft"
+              name={nameIcon}
               size={6}
               color={colors.primaryText}
             />
@@ -60,7 +67,7 @@ const Header = ({
           startIcon={
             <Icon as={AntDesign} name="setting" size={7} color={colors.blue} />
           }
-          onPress={_onGoBack}
+          onPress={_onSetting}
         />
       )}
     </Box>

@@ -7,6 +7,7 @@ import actions, {_onSuccess} from 'store/actions';
 import {routes, storage, storageKey} from 'utils';
 import Auth from './Auth';
 import Bottom from './Bottom';
+import Common from './Common';
 import {navigationRef} from './RootNavigation';
 
 const Stack = createNativeStackNavigator();
@@ -36,6 +37,7 @@ const RootNavigator = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name={routes.BOTTOM_TAB} component={Bottom} />
         <Stack.Screen name={routes.AUTH_CONTAINER} component={Auth} />
+        <Stack.Screen name={routes.COMMON_CONTAINER} component={Common} />
       </Stack.Navigator>
     </NavigationContainer>
   );
