@@ -1,0 +1,23 @@
+import {Header} from 'components';
+import {Box} from 'native-base';
+import React from 'react';
+import {Platform} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+
+const Container = ({children, ...rest}) => {
+  const {bottom} = useSafeAreaInsets();
+
+  return (
+    <Box flex={1}>
+      <Header {...rest} />
+      <Box
+        flex={1}
+        padding={12}
+        paddingBottom={Platform.OS === 'ios' ? bottom : 12}>
+        {children}
+      </Box>
+    </Box>
+  );
+};
+
+export default Container;
