@@ -15,7 +15,7 @@ const LoginSocial = () => {
           borderColor={colors.primaryText}
           _pressed={{bg: 'transparent'}}
           _text={{color: colors.lightBlue}}
-          startIcon={<Image source={icons.facebook} width={5} height={5} />}>
+          startIcon={<Image source={icons.facebook} size={5} />}>
           FACEBOOK
         </Button>
         <Box width={3} />
@@ -27,7 +27,7 @@ const LoginSocial = () => {
           borderColor={colors.primaryText}
           _pressed={{bg: 'transparent'}}
           _text={{color: colors.white}}
-          startIcon={<Image source={icons.google} width={5} height={5} />}>
+          startIcon={<Image source={icons.google} size={5} />}>
           GOOGLE
         </Button>
       </HStack>

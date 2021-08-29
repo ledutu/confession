@@ -2,12 +2,16 @@ import {Box, Button, Icon, Input} from 'native-base';
 import React, {useState} from 'react';
 import {colors} from 'utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useDispatch, useSelector} from 'react-redux';
+import actions from 'store/actions';
 
 const INIT_STATE = {email: '', password: ''};
 
 const FormSignIn = () => {
+  const dispatch = useDispatch();
   const [isShowPass, setIsShowPass] = useState(false);
   const [form, setForm] = useState(INIT_STATE);
+  const rLogin = useSelector(state => state.login);
 
   const disabled = !form.email || !form.password;
 
@@ -27,6 +31,13 @@ const FormSignIn = () => {
 
   const _onConfirm = () => {
     console.log('confirm');
+    dispatch({
+      type: actions.LOGIN_ACCOUNT,
+      body: {
+        email: form.email,
+        password: form.password,
+      },
+    });
   };
 
   return (

@@ -68,7 +68,7 @@ axios.interceptors.response.use(
 
 export default class HttpService {
   static generateHeader(headers) {
-    const token = store.getState().token.data;
+    const token = store.getState()?.login?.data;
     let options = {
       'Content-Type': headers || 'application/x-www-form-urlencoded',
       Accept: 'application/json',
@@ -101,6 +101,7 @@ export default class HttpService {
 
   //TODO: POST
   static async post(url, body, params) {
+    console.log(url);
     try {
       return await axios
         .post(url, body, {
