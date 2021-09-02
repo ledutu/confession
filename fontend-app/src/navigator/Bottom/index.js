@@ -1,9 +1,16 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {icons} from 'assets';
-import {HStack, Image, Text} from 'native-base';
-import * as React from 'react';
+import {Button, HStack, Image, Text} from 'native-base';
+import React from 'react';
+import {LayoutAnimation, Platform, UIManager} from 'react-native';
 import {bottom} from 'screens';
 import {colors, routes} from 'utils';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
 
 const Tab = createBottomTabNavigator();
 
@@ -15,10 +22,12 @@ const Bottom = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           height: 70,
+          borderTopWidth: 0,
           paddingHorizontal: 12,
           backgroundColor: colors.primary,
         },
-        tabBarIcon: ({focused}) => {
+        tabBarButton: ({accessibilityState, onPress}) => {
+          const focused = accessibilityState.selected;
           const icon_filled = {
             [routes.HOME_SCREEN]: icons.home_filled,
             [routes.QUESTION_SCREEN]: icons.question_filled,
@@ -32,34 +41,49 @@ const Bottom = () => {
             [routes.PROFILE_SCREEN]: 'Tài khoản',
           };
 
+          const _onPress = () => {
+            LayoutAnimation.configureNext(
+              LayoutAnimation.Presets.easeInEaseOut,
+            );
+            onPress();
+          };
+
           return (
-            <HStack
-              p={2}
-              rounded="lg"
-              alignItems="center"
-              space={focused ? 1 : 0}
-              bg={
-                focused
-                  ? {
-                      linearGradient: {
-                        colors: colors.gradient,
-                        start: [0, 0],
-                        end: [1, 0],
-                      },
-                    }
-                  : 'transparent'
-              }>
-              <Image
-                size={5}
-                style={{tintColor: focused ? colors.white : colors.primaryText}}
-                source={icon_filled[route.name]}
-              />
-              {focused && (
-                <Text fontSize="xs" color={colors.white}>
-                  {label[route.name]}
-                </Text>
-              )}
-            </HStack>
+            <Button
+              onPress={_onPress}
+              flexGrow={1}
+              bg={colors.transparent}
+              _pressed={{bg: colors.transparent}}>
+              <HStack
+                p={3}
+                rounded="lg"
+                alignItems="center"
+                space={1}
+                bg={
+                  focused
+                    ? {
+                        linearGradient: {
+                          colors: colors.gradient,
+                          start: [0, 0],
+                          end: [1, 0],
+                        },
+                      }
+                    : 'transparent'
+                }>
+                <Image
+                  size={5}
+                  style={{
+                    tintColor: focused ? colors.white : colors.primaryText,
+                  }}
+                  source={icon_filled[route.name]}
+                />
+                {focused && (
+                  <Text fontSize="xs" color={colors.white}>
+                    {label[route.name]}
+                  </Text>
+                )}
+              </HStack>
+            </Button>
           );
         },
       })}>
