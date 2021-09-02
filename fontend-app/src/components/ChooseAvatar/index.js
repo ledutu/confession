@@ -71,7 +71,7 @@ const ChooseAvatar = props => {
         _pressed={{bg: 'transparent'}}
         onPress={onOpen}>
         <Avatar
-          borderWidth={1}
+          borderWidth={2}
           borderColor={colors.white}
           size="xl"
           source={
