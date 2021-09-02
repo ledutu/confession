@@ -1,18 +1,7 @@
-import {Container} from 'components';
-import {
-  Avatar,
-  Box,
-  Button,
-  Center,
-  HStack,
-  Icon,
-  Image,
-  ScrollView,
-  Text,
-} from 'native-base';
+import {ChooseAvatar, Container} from 'components';
+import {Box, Button, HStack, Icon, Image, ScrollView, Text} from 'native-base';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import {useSelector} from 'react-redux';
 import {colors, routes} from 'utils';
 import {STATISTICAL} from './data';
@@ -74,33 +63,7 @@ const ProfileScreen = ({navigation}) => {
                 </Text>
               </HStack>
             </Box>
-            <Button p={0} bg="transparent" _pressed={{bg: 'transparent'}}>
-              <Avatar
-                borderWidth={1}
-                borderColor={colors.white}
-                size="xl"
-                source={{
-                  uri: profile?.image,
-                }}
-              />
-              <Center
-                position="absolute"
-                top={0}
-                left={0}
-                width={8}
-                height={8}
-                borderRadius={20}
-                borderWidth={1}
-                borderColor={colors.white}
-                backgroundColor={colors.darkPrimary}>
-                <Icon
-                  as={Feather}
-                  name="camera"
-                  size={4}
-                  color={colors.white}
-                />
-              </Center>
-            </Button>
+            <ChooseAvatar />
           </HStack>
         ) : (
           <Button mx={3} my={5} onPress={_onLogin}>

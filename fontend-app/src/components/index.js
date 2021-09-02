@@ -1,5 +1,5 @@
 import Header from './Header';
 import Container from './Container';
-import Loading from './Loading';
+import ChooseAvatar from './ChooseAvatar';
 
-export {Header, Container, Loading};
+export {Header, Container, ChooseAvatar};

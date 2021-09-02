@@ -1,9 +1,9 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Loading} from 'components';
+import {Modal, Spinner} from 'native-base';
 import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import actions, {_onSuccess} from 'store/actions';
 import {routes, storage, storageKey} from 'utils';
 import Auth from './Auth';
@@ -15,6 +15,7 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   const dispatch = useDispatch();
+  const modalLoad = useSelector(state => state.modalLoad);
 
   useEffect(() => {
     storage.getItem(storageKey.TOKEN_BEARER).then(access_token => {
@@ -41,7 +42,9 @@ const RootNavigator = () => {
         <Stack.Screen name={routes.AUTH_CONTAINER} component={Auth} />
         <Stack.Screen name={routes.COMMON_CONTAINER} component={Common} />
       </Stack.Navigator>
-      <Loading />
+      <Modal isOpen={modalLoad}>
+        <Spinner />
+      </Modal>
     </NavigationContainer>
   );
 };
