@@ -10,6 +10,8 @@ export default {
   black: 'black',
   lightBlue: '#1976D2',
   lightBlack: 'rgba(0,0,0,0.2)',
+  purple: '#8500FE',
+  darkPurple: '#DE00FF',
   gradient: ['#8500FE', '#DE00FF'],
   lightPurple: '#0466C9',
   transparent: 'transparent',
