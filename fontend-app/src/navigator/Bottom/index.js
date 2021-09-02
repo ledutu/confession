@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {icons} from 'assets';
-import {Image} from 'native-base';
+import {HStack, Image, Text} from 'native-base';
 import * as React from 'react';
 import {bottom} from 'screens';
 import {colors, routes} from 'utils';
@@ -13,8 +13,6 @@ const Bottom = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         headerShown: false,
-        tabBarActiveTintColor: colors.tomato,
-        tabBarInactiveTintColor: colors.primaryText,
         tabBarShowLabel: false,
         tabBarStyle: {
           borderTopWidth: 1.5,
@@ -22,7 +20,7 @@ const Bottom = () => {
           backgroundColor: colors.primary,
           borderTopColor: colors.primaryText,
         },
-        tabBarIcon: ({focused, color}) => {
+        tabBarIcon: ({focused}) => {
           const icon = {
             [routes.HOME_SCREEN]: icons.home,
             [routes.NOTIFICATION_SCREEN]: icons.bell,
@@ -33,12 +31,40 @@ const Bottom = () => {
             [routes.NOTIFICATION_SCREEN]: icons.bell_filled,
             [routes.PROFILE_SCREEN]: icons.user_filled,
           };
+          const label = {
+            [routes.HOME_SCREEN]: 'Trang chủ',
+            [routes.NOTIFICATION_SCREEN]: 'Thông báo',
+            [routes.PROFILE_SCREEN]: 'Tài khoản',
+          };
+
           return (
-            <Image
-              size={7}
-              style={{tintColor: focused ? null : color}}
-              source={focused ? icon_filled[route.name] : icon[route.name]}
-            />
+            <HStack
+              alignItems="center"
+              space={1}
+              p={2}
+              rounded="lg"
+              bg={
+                focused
+                  ? {
+                      linearGradient: {
+                        colors: colors.gradient,
+                        start: [0, 0],
+                        end: [1, 0],
+                      },
+                    }
+                  : 'transparent'
+              }>
+              <Image
+                size={6}
+                style={{tintColor: focused ? null : colors.primaryText}}
+                source={focused ? icon_filled[route.name] : icon[route.name]}
+              />
+              {focused && (
+                <Text fontSize="xs" color={colors.white}>
+                  {label[route.name]}
+                </Text>
+              )}
+            </HStack>
           );
         },
       })}>
