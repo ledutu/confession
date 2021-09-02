@@ -1,11 +1,12 @@
+import {Box, Text} from 'native-base';
 import React from 'react';
-import {View, Text} from 'react-native';
+import {colors} from 'utils';
 
 const RateQuestion = () => {
   return (
-    <View>
-      <Text>RateQuestion</Text>
-    </View>
+    <Box flex={1} bg={colors.darkPrimary} p={3}>
+      <Text>Rate</Text>
+    </Box>
   );
 };
 
