@@ -14,30 +14,30 @@ const Bottom = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          borderTopWidth: 1.5,
           height: 70,
+          paddingHorizontal: 12,
           backgroundColor: colors.primary,
-          borderTopColor: colors.primaryText,
         },
         tabBarIcon: ({focused}) => {
           const icon_filled = {
             [routes.HOME_SCREEN]: icons.home_filled,
+            [routes.QUESTION_SCREEN]: icons.question_filled,
             [routes.NOTIFICATION_SCREEN]: icons.bell_filled,
             [routes.PROFILE_SCREEN]: icons.user_filled,
           };
           const label = {
             [routes.HOME_SCREEN]: 'Trang chủ',
+            [routes.QUESTION_SCREEN]: 'Câu Hỏi',
             [routes.NOTIFICATION_SCREEN]: 'Thông báo',
             [routes.PROFILE_SCREEN]: 'Tài khoản',
           };
 
           return (
             <HStack
-              alignItems="center"
-              space={1}
-              py={2}
-              px={3}
+              p={2}
               rounded="lg"
+              alignItems="center"
+              space={focused ? 1 : 0}
               bg={
                 focused
                   ? {
@@ -66,6 +66,10 @@ const Bottom = () => {
       <Tab.Screen
         name={routes.HOME_SCREEN}
         component={bottom[routes.HOME_SCREEN]}
+      />
+      <Tab.Screen
+        name={routes.QUESTION_SCREEN}
+        component={bottom[routes.QUESTION_SCREEN]}
       />
       <Tab.Screen
         name={routes.NOTIFICATION_SCREEN}

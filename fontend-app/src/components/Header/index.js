@@ -7,7 +7,6 @@ import {colors} from 'utils';
 const Header = ({
   title = 'Header',
   canGoBack = true,
-  isLineBottom = false,
   nameIcon = 'arrowleft',
   renderRight,
   onButtonRight,
