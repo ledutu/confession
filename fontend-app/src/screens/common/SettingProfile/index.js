@@ -1,12 +1,5 @@
 import {ChooseAvatar, Container} from 'components';
-import {
-  Avatar,
-  Box,
-  Button,
-  KeyboardAvoidingView,
-  ScrollView,
-  Text,
-} from 'native-base';
+import {Button, KeyboardAvoidingView, ScrollView, Text} from 'native-base';
 import React from 'react';
 import {Platform} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
