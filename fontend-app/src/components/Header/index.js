@@ -1,7 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import {Box, Button, Icon, Text} from 'native-base';
 import React from 'react';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {colors} from 'utils';
 
@@ -14,7 +13,6 @@ const Header = ({
   onButtonRight,
   onGoBack,
 }) => {
-  const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
 
   const _onGoBack = () => {
@@ -37,14 +35,10 @@ const Header = ({
   };
 
   return (
-    <Box
-      safeAreaTop
-      bg={colors.primary}
-      borderBottomWidth={isLineBottom ? 2 : 0}
-      borderColor={colors.primaryText}>
+    <Box safeAreaTop py={3} bg={colors.darkPrimary}>
       {canGoBack && (
         <Button
-          top={top}
+          safeAreaTop
           left={0}
           bottom={0}
           px={3}
@@ -61,7 +55,7 @@ const Header = ({
           onPress={_onGoBack}
         />
       )}
-      <Box mx={12} py={3} justifyContent="center" alignItems="center">
+      <Box mx={12} justifyContent="center" alignItems="center">
         <Text bold numberOfLines={1} fontSize="lg" color={colors.white}>
           {title}
         </Text>

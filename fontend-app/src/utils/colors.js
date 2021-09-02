@@ -2,6 +2,7 @@ export default {
   tomato: 'tomato',
   gray: 'gray',
   primary: '#383D70',
+  darkPrimary: '#293165',
   primaryText: '#767DB6',
   white: 'white',
   blue: '#28A4D6',
