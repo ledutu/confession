@@ -8,7 +8,6 @@ import {STATISTICAL} from './data';
 
 const ProfileScreen = ({navigation}) => {
   const rInformation = useSelector(state => state.userInfo.data);
-
   const {email, profile} = rInformation || {};
 
   const _onSetting = () => {

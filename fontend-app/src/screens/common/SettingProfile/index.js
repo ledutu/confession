@@ -1,4 +1,4 @@
-import {Container} from 'components';
+import {ChooseAvatar, Container} from 'components';
 import {
   Avatar,
   Box,
@@ -41,26 +41,7 @@ const SettingProfile = () => {
           <Text fontSize="lg" bold color={colors.white}>
             Hồ sơ của bạn
           </Text>
-          <Button my={5} p={0} bg="transparent" _pressed={{bg: 'transparent'}}>
-            <Box alignItems="center">
-              <Avatar
-                size="lg"
-                source={
-                  profile?.image
-                    ? {
-                        uri: profile?.image,
-                      }
-                    : undefined
-                }>
-                <Text fontSize="xl" bold color={colors.white}>
-                  {!profile?.image && profile?.full_name?.substring(0, 1)}
-                </Text>
-              </Avatar>
-              <Text fontSize="md" bold color={colors.lightPurple} mt={2}>
-                Thay đổi ảnh đại diện
-              </Text>
-            </Box>
-          </Button>
+          <ChooseAvatar mt={5} />
           <InputLabel label="Tên" value={profile?.full_name} />
           <InputLabel label="Email" value={email} />
           <InputLabel label="Mật khẩu" value="dvlcodervn" isPass />

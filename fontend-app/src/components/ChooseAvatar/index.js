@@ -8,17 +8,19 @@ import {
   Icon,
   IconButton,
   Modal,
+  Pressable,
   Text,
   useDisclose,
 } from 'native-base';
-import React from 'react';
+import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import {useSelector} from 'react-redux';
 import {colors} from 'utils';
 import {avatars} from './data';
 
-const ChooseAvatar = () => {
+const ChooseAvatar = props => {
+  const [avatar, setAvatar] = useState('');
   const {isOpen, onOpen, onClose} = useDisclose();
   const rInformation = useSelector(state => state.userInfo.data);
   const {profile} = rInformation || {};
@@ -26,8 +28,13 @@ const ChooseAvatar = () => {
   const _renderSeparator = () => <Box h={5} />;
 
   const _renderItem = ({item, index}) => {
+    const _onChoose = () => {
+      onClose();
+      setAvatar(item);
+    };
+
     return (
-      <Box key={index}>
+      <Pressable key={index} onPress={_onChoose}>
         <Avatar
           borderWidth={2}
           borderColor={colors.white}
@@ -36,7 +43,6 @@ const ChooseAvatar = () => {
         />
         {index === 0 && (
           <IconButton
-            onPress={onClose}
             borderWidth={2}
             borderColor={colors.white}
             position="absolute"
@@ -46,18 +52,20 @@ const ChooseAvatar = () => {
             right={0}
             bg={colors.primary}
             rounded="full"
+            _pressed={{bg: colors.primary}}
             icon={
               <Icon as={AntDesign} name="plus" size={8} color={colors.white} />
             }
           />
         )}
-      </Box>
+      </Pressable>
     );
   };
 
   return (
     <Box>
       <Button
+        {...props}
         p={0}
         bg="transparent"
         _pressed={{bg: 'transparent'}}
@@ -66,9 +74,11 @@ const ChooseAvatar = () => {
           borderWidth={1}
           borderColor={colors.white}
           size="xl"
-          source={{
-            uri: profile?.image,
-          }}
+          source={
+            avatar || {
+              uri: profile?.image,
+            }
+          }
         />
         <Center
           position="absolute"
