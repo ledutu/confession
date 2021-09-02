@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {icons} from 'assets';
 import {HStack, Image, Text} from 'native-base';
@@ -21,11 +20,6 @@ const Bottom = () => {
           borderTopColor: colors.primaryText,
         },
         tabBarIcon: ({focused}) => {
-          const icon = {
-            [routes.HOME_SCREEN]: icons.home,
-            [routes.NOTIFICATION_SCREEN]: icons.bell,
-            [routes.PROFILE_SCREEN]: icons.user,
-          };
           const icon_filled = {
             [routes.HOME_SCREEN]: icons.home_filled,
             [routes.NOTIFICATION_SCREEN]: icons.bell_filled,
@@ -41,7 +35,8 @@ const Bottom = () => {
             <HStack
               alignItems="center"
               space={1}
-              p={2}
+              py={2}
+              px={3}
               rounded="lg"
               bg={
                 focused
@@ -55,9 +50,9 @@ const Bottom = () => {
                   : 'transparent'
               }>
               <Image
-                size={6}
-                style={{tintColor: focused ? null : colors.primaryText}}
-                source={focused ? icon_filled[route.name] : icon[route.name]}
+                size={5}
+                style={{tintColor: focused ? colors.white : colors.primaryText}}
+                source={icon_filled[route.name]}
               />
               {focused && (
                 <Text fontSize="xs" color={colors.white}>
