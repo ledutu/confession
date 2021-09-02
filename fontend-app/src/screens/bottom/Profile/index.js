@@ -12,7 +12,7 @@ import {
 } from 'native-base';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
 import {useSelector} from 'react-redux';
 import {colors, routes} from 'utils';
 import {STATISTICAL} from './data';
@@ -54,8 +54,7 @@ const ProfileScreen = ({navigation}) => {
             pb={5}
             mb={5}
             borderBottomWidth={2}
-            borderColor={colors.primaryText}
-            alignItems="center">
+            borderColor={colors.primaryText}>
             <Box flex={1}>
               <Text fontSize="lg" bold color={colors.white}>
                 {profile?.full_name}
@@ -77,31 +76,30 @@ const ProfileScreen = ({navigation}) => {
             </Box>
             <Button p={0} bg="transparent" _pressed={{bg: 'transparent'}}>
               <Avatar
-                size="lg"
-                source={
-                  profile?.image
-                    ? {
-                        uri: profile?.image,
-                      }
-                    : undefined
-                }>
-                {!profile?.image && profile?.full_name?.substring(0, 1)}
-                <Center
-                  position="absolute"
-                  top={0}
-                  right={-3}
-                  width={5}
-                  height={5}
-                  borderRadius={20}
-                  backgroundColor={colors.blue}>
-                  <Icon
-                    as={MaterialCommunityIcons}
-                    name="pencil"
-                    size={3}
-                    color={colors.black}
-                  />
-                </Center>
-              </Avatar>
+                borderWidth={1}
+                borderColor={colors.white}
+                size="xl"
+                source={{
+                  uri: profile?.image,
+                }}
+              />
+              <Center
+                position="absolute"
+                top={0}
+                left={0}
+                width={8}
+                height={8}
+                borderRadius={20}
+                borderWidth={1}
+                borderColor={colors.white}
+                backgroundColor={colors.darkPrimary}>
+                <Icon
+                  as={Feather}
+                  name="camera"
+                  size={4}
+                  color={colors.white}
+                />
+              </Center>
             </Button>
           </HStack>
         ) : (
