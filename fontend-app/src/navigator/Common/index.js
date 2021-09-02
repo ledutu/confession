@@ -12,6 +12,14 @@ const Common = () => {
         name={routes.SETTING_PROFILE_SCREEN}
         component={common[routes.SETTING_PROFILE_SCREEN]}
       />
+      <Stack.Screen
+        name={routes.ADD_QUESTION_SCREEN}
+        component={common[routes.ADD_QUESTION_SCREEN]}
+      />
+      <Stack.Screen
+        name={routes.RATE_QUESTION_SCREEN}
+        component={common[routes.RATE_QUESTION_SCREEN]}
+      />
     </Stack.Navigator>
   );
 };

@@ -1,12 +1,12 @@
 import {routes} from 'utils';
-import HomeScreen from './Home';
-import QuestionScreen from './Question';
-import NotificationScreen from './Notification';
-import ProfileScreen from './Profile';
+import Home from './Home';
+import Question from './Question';
+import Notification from './Notification';
+import Profile from './Profile';
 
 export default {
-  [routes.HOME_SCREEN]: HomeScreen,
-  [routes.QUESTION_SCREEN]: QuestionScreen,
-  [routes.NOTIFICATION_SCREEN]: NotificationScreen,
-  [routes.PROFILE_SCREEN]: ProfileScreen,
+  [routes.HOME_SCREEN]: Home,
+  [routes.QUESTION_SCREEN]: Question,
+  [routes.NOTIFICATION_SCREEN]: Notification,
+  [routes.PROFILE_SCREEN]: Profile,
 };
