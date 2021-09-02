@@ -15,7 +15,7 @@ const Bottom = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           borderTopWidth: 1.5,
-          height: 60,
+          height: 70,
           backgroundColor: colors.primary,
           borderTopColor: colors.primaryText,
         },

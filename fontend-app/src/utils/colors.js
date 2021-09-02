@@ -1,8 +1,8 @@
 export default {
   tomato: 'tomato',
   gray: 'gray',
-  primary: '#141F23',
-  primaryText: '#50666A',
+  primary: '#383D70',
+  primaryText: '#767DB6',
   white: 'white',
   blue: '#28A4D6',
   lightPrimary: '#38464F',

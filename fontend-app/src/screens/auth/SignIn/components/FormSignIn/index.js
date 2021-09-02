@@ -77,14 +77,14 @@ const FormSignIn = () => {
         />
       </Box>
       <Button
+        mt={6}
+        borderRadius={15}
         onPress={_onConfirm}
         isDisabled={disabled}
         isLoading={rLogin.isLoading}
-        mt={6}
-        borderRadius={15}
-        bg={disabled ? colors.lightPrimary : colors.blue}
+        _disabled={{bg: colors.primaryText}}
         _pressed={{bg: colors.blue}}
-        _text={{color: disabled ? colors.primaryText : colors.black}}>
+        _text={{color: colors.white}}>
         ĐĂNG NHẬP
       </Button>
     </Box>

@@ -25,7 +25,7 @@ const Header = ({
     return (
       <Button
         onPress={onButtonRight}
-        top={top}
+        safeAreaTop
         right={0}
         bottom={0}
         px={3}
@@ -38,7 +38,7 @@ const Header = ({
 
   return (
     <Box
-      pt={top}
+      safeAreaTop
       bg={colors.primary}
       borderBottomWidth={isLineBottom ? 2 : 0}
       borderColor={colors.primaryText}>
@@ -55,14 +55,14 @@ const Header = ({
               as={AntDesign}
               name={nameIcon}
               size={6}
-              color={colors.primaryText}
+              color={colors.white}
             />
           }
           onPress={_onGoBack}
         />
       )}
       <Box mx={12} py={3} justifyContent="center" alignItems="center">
-        <Text bold numberOfLines={1} fontSize="lg" color={colors.primaryText}>
+        <Text bold numberOfLines={1} fontSize="lg" color={colors.white}>
           {title}
         </Text>
       </Box>
