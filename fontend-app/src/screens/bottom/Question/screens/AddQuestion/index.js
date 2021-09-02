@@ -54,7 +54,7 @@ const InputLabel = ({
         h={height}
         textAlignVertical="top"
         borderColor={colors.primaryText}
-        _focus={{borderColor: colors.white}}
+        _focus={{borderColor: colors.blue}}
       />
     </Box>
   );
