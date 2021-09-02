@@ -30,7 +30,7 @@ const SettingProfile = () => {
       title="Cài đặt"
       nameIcon="close"
       renderRight={() => (
-        <Text bold fontSize="md" color={colors.blue}>
+        <Text bold fontSize="md" color={colors.white}>
           Hoàn tất
         </Text>
       )}>
@@ -56,7 +56,7 @@ const SettingProfile = () => {
                   {!profile?.image && profile?.full_name?.substring(0, 1)}
                 </Text>
               </Avatar>
-              <Text fontSize="md" bold color={colors.blue} mt={2}>
+              <Text fontSize="md" bold color={colors.lightPurple} mt={2}>
                 Thay đổi ảnh đại diện
               </Text>
             </Box>
@@ -72,7 +72,8 @@ const SettingProfile = () => {
             borderRadius={15}
             mt={6}
             variant="outline"
-            _pressed={{bg: 'transparent'}}>
+            _text={{color: colors.white}}
+            _pressed={{bg: colors.transparent}}>
             ĐĂNG XUẤT
           </Button>
         </ScrollView>

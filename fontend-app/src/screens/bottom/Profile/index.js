@@ -43,7 +43,7 @@ const ProfileScreen = ({navigation}) => {
       px={0}
       renderRight={() =>
         rInformation && (
-          <Icon as={AntDesign} name="setting" size={7} color={colors.blue} />
+          <Icon as={AntDesign} name="setting" size={7} color={colors.white} />
         )
       }
       onButtonRight={_onSetting}>

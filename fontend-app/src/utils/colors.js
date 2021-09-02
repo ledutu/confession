@@ -10,4 +10,6 @@ export default {
   lightBlue: '#1976D2',
   lightBlack: 'rgba(0,0,0,0.2)',
   gradient: ['#8500FE', '#DE00FF'],
+  lightPurple: '#0466C9',
+  transparent: 'transparent',
 };
