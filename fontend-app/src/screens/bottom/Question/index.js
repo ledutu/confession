@@ -35,7 +35,8 @@ const Question = () => {
               : colors.primary
           }>
           <Text
-            fontSize="md"
+            numberOfLines={1}
+            fontSize="sm"
             color={focused ? colors.white : colors.primaryText}>
             {route.name}
           </Text>
@@ -66,8 +67,8 @@ const Question = () => {
             backgroundColor: colors.darkPrimary,
           },
         }}>
-        <Tab.Screen name="AddQuestion" component={AddQuestion} />
-        <Tab.Screen name="RateQuestion" component={RateQuestion} />
+        <Tab.Screen name="Thêm Câu hỏi" component={AddQuestion} />
+        <Tab.Screen name="Đánh giá Câu hỏi" component={RateQuestion} />
       </Tab.Navigator>
     </Container>
   );
