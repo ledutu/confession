@@ -20,10 +20,10 @@ const HomeScreen = () => {
     return (
       <Box
         p={3}
-        borderWidth={4}
         rounded={15}
-        borderColor="brand.primaryText"
-        bg="brand.primary">
+        bg="brand.primary"
+        borderWidth={4}
+        borderColor="brand.primaryText">
         <HStack alignItems="center" space={3}>
           <Avatar
             flex={1 / 4}
@@ -47,8 +47,8 @@ const HomeScreen = () => {
             space={1}
             justifyContent="center"
             alignItems="center">
-            <Icon as={Ionicons} name="eye" size={4} color="white" />
-            <Text fontSize="sm" color="white" numberOfLines={1}>
+            <Icon as={Ionicons} name="eye" size={4} color="brand.primaryText" />
+            <Text fontSize="sm" color="brand.primaryText" numberOfLines={1}>
               200
             </Text>
           </HStack>
