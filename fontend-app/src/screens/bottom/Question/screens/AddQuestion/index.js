@@ -125,9 +125,8 @@ const AddQuestion = () => {
             value={form.wrongAnswer3}
             onChangeText={_onTextWrongAnswer3}
           />
-          <Pressable>
+          <Pressable mt={5}>
             <Box
-              mt={5}
               p={3}
               rounded="lg"
               justifyContent="center"
