@@ -53,7 +53,7 @@ const InputLabel = ({
         mt={1}
         h={height}
         textAlignVertical="top"
-        borderColor={colors.primaryText}
+        borderColor="brand.primaryText"
         borderWidth={2}
         _focus={{borderColor: colors.blue}}
       />

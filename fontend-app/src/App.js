@@ -1,8 +1,9 @@
-import {NativeBaseProvider} from 'native-base';
+import {extendTheme, NativeBaseProvider} from 'native-base';
 import RootNavigator from 'navigator';
 import React from 'react';
 import {Provider} from 'react-redux';
 import store from 'store';
+import {colors} from 'utils';
 
 const config = {
   dependencies: {
@@ -10,10 +11,16 @@ const config = {
   },
 };
 
+const newColorTheme = {
+  brand: colors,
+};
+
+const theme = extendTheme({colors: newColorTheme});
+
 const App = () => {
   return (
     <Provider store={store}>
-      <NativeBaseProvider config={config}>
+      <NativeBaseProvider config={config} theme={theme}>
         <RootNavigator />
       </NativeBaseProvider>
     </Provider>
