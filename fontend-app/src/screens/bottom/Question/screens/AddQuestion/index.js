@@ -85,7 +85,7 @@ const AddQuestion = () => {
   };
 
   return (
-    <Box flex={1} bg={colors.darkPrimary} p={3}>
+    <Box flex={1} p={3}>
       <KeyboardAvoidingView
         flex={1}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>

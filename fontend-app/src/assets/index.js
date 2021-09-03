@@ -7,4 +7,8 @@ const icons = {
   user_filled: require('./icons/user_filled.png'),
 };
 
-export {icons};
+const images = {
+  bg: require('./images/bg.png'),
+};
+
+export {icons, images};

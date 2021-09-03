@@ -1,10 +1,9 @@
 import {Box, Text} from 'native-base';
 import React from 'react';
-import {colors} from 'utils';
 
 const RateQuestion = () => {
   return (
-    <Box flex={1} bg={colors.darkPrimary} p={3}>
+    <Box flex={1} p={3}>
       <Text>Rate</Text>
     </Box>
   );

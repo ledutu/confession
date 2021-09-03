@@ -1,11 +1,12 @@
+import {images} from 'assets';
 import {Header} from 'components';
-import {Box} from 'native-base';
+import {Box, Image} from 'native-base';
 import React from 'react';
-import {colors} from 'utils';
+import {StyleSheet} from 'react-native';
 
 const Container = ({
   children,
-  bg = colors.darkPrimary,
+  bg = 'brand.transparent',
   px = 3,
   py = 3,
   ...rest
@@ -13,9 +14,10 @@ const Container = ({
   return (
     <Box flex={1}>
       <Header {...rest} />
-      <Box safeAreaBottom bg={bg} flex={1} py={py} px={px}>
+      <Box safeAreaBottom bg={bg} flex={1} py={py} px={px} zIndex={10}>
         {children}
       </Box>
+      <Image style={StyleSheet.absoluteFill} source={images.bg} />
     </Box>
   );
 };

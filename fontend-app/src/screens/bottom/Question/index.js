@@ -53,6 +53,7 @@ const Question = () => {
     <Container title="Câu hỏi" canGoBack={false} px={0} py={0}>
       <Tab.Navigator
         tabBar={_renderTabBar}
+        sceneContainerStyle={{backgroundColor: colors.transparent}}
         screenOptions={{
           tabBarIndicatorStyle: {
             backgroundColor: colors.transparent,

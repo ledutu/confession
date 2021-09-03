@@ -34,7 +34,7 @@ const Header = ({
   };
 
   return (
-    <Box safeAreaTop py={3} bg={colors.darkPrimary}>
+    <Box safeAreaTop py={3} bg="brand.transparent" zIndex={10}>
       {canGoBack && (
         <Button
           safeAreaTop
