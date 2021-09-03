@@ -5,7 +5,7 @@ import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import actions, {_onSuccess} from 'store/actions';
-import {routes, storage, storageKey} from 'utils';
+import {colors, routes, storage, storageKey} from 'utils';
 import Auth from './Auth';
 import Bottom from './Bottom';
 import Common from './Common';
@@ -35,7 +35,9 @@ const RootNavigator = () => {
   }, [dispatch]);
 
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer
+      ref={navigationRef}
+      theme={{colors: {background: colors.darkPrimary}}}>
       <StatusBar translucent backgroundColor="transparent" />
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name={routes.BOTTOM_TAB} component={Bottom} />
