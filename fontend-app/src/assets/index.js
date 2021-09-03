@@ -8,7 +8,7 @@ const icons = {
 };
 
 const images = {
-  bg: require('./images/bg.png'),
+  bg: require('./images/bg.jpg'),
 };
 
 export {icons, images};
