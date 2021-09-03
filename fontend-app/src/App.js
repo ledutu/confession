@@ -11,11 +11,9 @@ const config = {
   },
 };
 
-const newColorTheme = {
-  brand: colors,
-};
-
-const theme = extendTheme({colors: newColorTheme});
+const theme = extendTheme({
+  colors: {brand: colors},
+});
 
 const App = () => {
   return (
