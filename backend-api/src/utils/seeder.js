@@ -1,7 +1,7 @@
 var faker = require('faker');
 var bcrypt = require('bcrypt');
 const {
-    User,
+    User, Question, RootQuestion,
 } = require('../models');
 
 /**
@@ -41,6 +41,66 @@ function createUserDatabaseSeed(times = 5, language) {
     }
 
     return { users, profiles };
+}
+
+/**
+ * user: { type: Schema.Types.ObjectId, ref: 'users' },
+ * questions: [{ type: Schema.Types.ObjectId, ref: 'questions' }],
+ * category: { type: Schema.Types.ObjectId, ref: 'categories' },
+ * receiver: { type: Schema.Types.ObjectId, ref: 'users' },
+ * is_hide: { type: Schema.Types.Boolean, default: false },
+ * is_block: { type: Schema.Types.Boolean, default: false },
+*/
+async function createRootQuestion(times = 5, language) {
+    if (language) {
+        faker.locale = language;
+    }
+
+    const questionCount = [4, 5, 6];
+    let rootQuestions = [];
+
+    const users = await User.find({}).select('_id').limit(times);
+
+    for (let i = 0; i < times; i++) {
+        let random = faker.helpers.randomize(questionCount);
+        let user = faker.helpers.randomize(users);
+        let rootQuestion = new RootQuestion({
+            user: user._id,
+            receiver: null,
+        })
+        for (let j = 0; j < random; j++) {
+            let question = await createOneQuestion(language);
+            rootQuestion.questions = [...rootQuestion.questions, question._id];
+        }
+
+        rootQuestions = [...rootQuestions, rootQuestion];
+    }
+
+    return { rootQuestions };
+}
+
+/**
+ * title: [{ type: Schema.Types.String, default: false }],
+ * content: { type: Object, default: {} },
+ * answer: { type: Schema.Types.ObjectId, ref: 'answers' },
+ * is_hide: { type: Schema.Types.Boolean, default: false },
+ * is_block: { type: Schema.Types.Boolean, default: false },
+*/
+async function createOneQuestion(language) {
+    if (language) {
+        faker.locale = language;
+    }
+    let questions = new Question({
+        title: faker.lorem.sentences(1),
+        content: {
+            message: faker.lorem.sentences(1),
+            right_answer: true,
+        }
+    });
+
+    await questions.save();
+
+    return questions;
 }
 
 // /**
@@ -273,6 +333,7 @@ function createUserDatabaseSeed(times = 5, language) {
 
 const Seeder = {
     createUserDatabaseSeed,
+    createRootQuestion,
     // createReviewDatabaseSeed,
     // createReviewCategory,
     // createComment,

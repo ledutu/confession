@@ -23,6 +23,18 @@ function createUser () {
     fi
 }
 
+function createRootQuestion () {
+    echo "Creating root question database......"
+    RESPONSE=`wget -qO- ${API_URL}/root-question?times=${TIMES}\&locale=${LOCALE}`
+    if [ $RESPONSE ]
+    then
+        echo "Create root question database successful"
+    else
+        echo "Create root question database fail, please check and try again"
+        exit 1
+    fi
+}
+
 function createReviewCategory() {
     echo "Creating Review Category database......"
     RESPONSE=`wget -qO- ${API_URL}/review-category?times=${TIMES}\&locale=${LOCALE}`
@@ -109,6 +121,9 @@ function main() {
     case $TYPE in
         "user")
             createUser
+        ;;
+        "root-question")
+            createRootQuestion
         ;;
         "review-category")
             createReviewCategory
