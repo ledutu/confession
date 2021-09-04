@@ -9,6 +9,7 @@ function me(request, response) {
             google_id: user.google_id,
             facebook_id: user.facebook_id,
             email: user.email,
+            createdAt: user.createdAt,
         });
     } catch (err) {
         return response.status(HTTP_STATUS.SERVER_ERROR).json({
