@@ -1,5 +1,5 @@
 import {Container} from 'components';
-import {Avatar, Box, FlatList, HStack, Text, VStack} from 'native-base';
+import {Avatar, Box, Button, FlatList, HStack, Text, VStack} from 'native-base';
 import React from 'react';
 
 const NotificationScreen = () => {
@@ -8,25 +8,33 @@ const NotificationScreen = () => {
 
   const _renderItem = ({}) => {
     return (
-      <HStack p={3} rounded={15} space={3} bg="brand.primary">
-        <Avatar
-          size="md"
-          rounded={10}
-          borderWidth={2}
-          borderColor="brand.primaryText"
-        />
-        <VStack space={1} flex={1}>
-          <Text color="white" fontSize="md">
-            Title
+      <VStack space={2} bg="brand.primary" p={3} rounded={15}>
+        <HStack space={3}>
+          <Avatar
+            size="lg"
+            rounded={10}
+            borderWidth={2}
+            borderColor="brand.primaryText"
+          />
+          <VStack space={1} flex={1}>
+            <Text color="white" fontSize="md">
+              Title
+            </Text>
+            <Text color="brand.primaryText" fontSize="sm">
+              Content
+            </Text>
+          </VStack>
+          <Text color="brand.primaryText" fontSize="xs">
+            12/21/2021
           </Text>
-          <Text color="brand.primaryText" fontSize="sm">
-            Content
-          </Text>
-        </VStack>
-        <Text color="brand.primaryText" fontSize="xs">
-          12/21/2021
-        </Text>
-      </HStack>
+        </HStack>
+        <HStack justifyContent="flex-end" space={3}>
+          <Button colorScheme="teal">Đồng ý</Button>
+          <Button colorScheme="danger" _text={{color: 'white'}}>
+            Hủy
+          </Button>
+        </HStack>
+      </VStack>
     );
   };
 
