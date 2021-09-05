@@ -8,15 +8,30 @@ import {
   Pressable,
   Text,
 } from 'native-base';
-import React from 'react';
+import React, {useEffect} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useDispatch, useSelector} from 'react-redux';
+import actions from 'store/actions';
 import {colors} from 'utils';
 
 const HomeScreen = () => {
-  const _renderSeparator = () => <Box height={5} />;
-  const _keyExtractor = (_, index) => String(index);
+  const dispatch = useDispatch();
+  const rQuestion = useSelector(state => state.question);
+  const rLogin = useSelector(state => state.login.data);
 
-  const _renderItem = ({}) => {
+  useEffect(() => {
+    if (rLogin?.access_token) {
+      dispatch({
+        type: actions.GET_QUESTION,
+      });
+    }
+  }, [dispatch, rLogin]);
+
+  const _renderSeparator = () => <Box height={5} />;
+
+  const _keyExtractor = item => item?._id;
+
+  const _renderItem = ({item}) => {
     return (
       <Box
         p={3}
@@ -31,6 +46,7 @@ const HomeScreen = () => {
             borderWidth={8}
             rounded={20}
             borderColor="brand.primaryText"
+            alt="Alternate Text"
           />
           <Text
             flex={1}
@@ -76,7 +92,7 @@ const HomeScreen = () => {
   return (
     <Container title="Trang chủ" canGoBack={false}>
       <FlatList
-        data={[1, 1, 1, 1, 1, 1]}
+        data={rQuestion.data}
         keyExtractor={_keyExtractor}
         renderItem={_renderItem}
         ItemSeparatorComponent={_renderSeparator}
