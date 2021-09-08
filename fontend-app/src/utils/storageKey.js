@@ -1,4 +1,5 @@
 export default {
   TOKEN_BEARER: 'TOKEN_BEARER',
   TOKEN_USER: 'TOKEN_USER',
+  ON_BOARD: 'ON_BOARD',
 };

@@ -1,10 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {icons} from 'assets';
 import {Button, HStack, Image, Text} from 'native-base';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {LayoutAnimation, Platform, UIManager} from 'react-native';
+import {useDispatch} from 'react-redux';
 import {bottom} from 'screens';
-import {colors, routes} from 'utils';
+import actions, {_onSuccess} from 'store/actions';
+import {colors, routes, storage, storageKey} from 'utils';
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -15,6 +17,25 @@ if (Platform.OS === 'android') {
 const Tab = createBottomTabNavigator();
 
 const Bottom = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    storage.getItem(storageKey.TOKEN_BEARER).then(access_token => {
+      storage.getItem(storageKey.TOKEN_USER).then(user => {
+        if (access_token && user) {
+          dispatch({
+            type: _onSuccess(actions.LOGIN_ACCOUNT),
+            data: {
+              access_token,
+              user,
+            },
+          });
+          dispatch({type: actions.GET_USER_INFORMATION});
+        }
+      });
+    });
+  }, [dispatch]);
+
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
