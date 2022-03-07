@@ -299,7 +299,7 @@ function App() {
   };
 
   const callApi = async (message) => {
-    const base_url = "http://api.reviewduthu.vn/api";
+    const base_url = "https://api.reviewduthu.vn/api";
     const res = await axios.post(`${base_url}/sendMessage`, {
       message,
     });
