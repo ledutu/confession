@@ -1,16 +1,11 @@
-import "./App.css";
-import { Button, Radio, Modal, Card, Result } from "antd";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { SmileOutlined } from "@ant-design/icons";
+import { Button, Card, Result } from "antd";
+import axios from "axios";
+import { useState } from "react";
+import "./App.css";
 import audio from "./assets/audios/kiss_the_rain.mp3";
 
 function App() {
-  const [status, setStatus] = useState(-1);
-  const [value, setValue] = useState(0);
-  const [visibled, setVisibled] = useState(false);
-  const [resultMessage, setResultMessage] = useState("Nguyên muốn đi ");
-  const totalStep = [0, 1, 2, 3];
   const [stepNumber, setStepNumber] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
@@ -26,16 +21,6 @@ function App() {
       // handle: () => handleNextStepOneDeny(),
     },
   ]);
-
-  const messages = [
-    "Dookki",
-    "Do Nguyên chọn",
-    "Do Tùng chọn",
-    "Đi hóng gió",
-    "Đi uống nước",
-    "Uống nước + hóng gió",
-    "Đi về 😢",
-  ];
 
   const loveMessages = [
     {
@@ -298,19 +283,7 @@ function App() {
     },
   ];
 
-  const onChange = (e) => {
-    setValue(e.target.value);
-  };
-
-  // const bot = new Telegraf('1717239698:AAHWFUGxuTckQX8o2ybftYGD4pln2bhOyns');
-
   const handleNext = () => {
-    // bot.telegram.sendMessage(
-    //   -581108899,
-    //   'Le Duc Tung Oi',
-    //   { parse_mode: 'HTML' }
-    // );
-
     if (!isPlay) {
       setIsPlay(true);
       new Audio(audio).play();
@@ -318,12 +291,6 @@ function App() {
 
     if (stepNumber === loveMessages.length - 1) return;
     setStepNumber(stepNumber + 1);
-
-    // setResultMessage(resultMessage + ' ' + messages[value]);
-
-    // if (stepNumber < totalStep.length - 1) {
-    //   setStepNumber(stepNumber + 1);
-    // }
   };
 
   const handleBack = () => {
@@ -332,28 +299,15 @@ function App() {
   };
 
   const callApi = async (message) => {
-    await axios.post("http://api.reviewduthu.vn/api/sendMessage", {
+    const base_url = "http://api.reviewduthu.vn/api";
+    const res = await axios.post(`${base_url}/sendMessage`, {
       message,
     });
-  };
-
-  const handleClose = () => {
-    setVisibled(false);
   };
 
   const hover = () => {
     let temp = [stepOneStep[1], stepOneStep[0]];
     setStepOneStep(temp);
-  };
-
-  const handleNextStepOne = () => {
-    if (stepNumber < totalStep.length - 1) {
-      setStepNumber(stepNumber + 1);
-    }
-  };
-
-  const handleNextStepOneDeny = () => {
-    setVisibled(true);
   };
 
   const handleOk = () => {
@@ -375,7 +329,7 @@ function App() {
             !isEnd && (
               <Card className="card" bordered key={item.id}>
                 {item.message}
-                <div class="row-space">
+                <div className="row-space">
                   <Button type="default" className="mt-20" onClick={handleBack}>
                     Quay lại
                   </Button>
@@ -390,7 +344,7 @@ function App() {
             !isEnd && (
               <Card className="card" bordered key={item.id}>
                 {item.message}
-                <div class="row-space">
+                <div className="row-space">
                   <Button
                     type={stepOneStep[0].type}
                     className="mt-20"
