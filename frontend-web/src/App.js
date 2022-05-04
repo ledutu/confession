@@ -319,7 +319,7 @@ function App() {
   };
 
   const handlePending = () => {
-    callApi("Để Chị suy nghĩ thêm");
+    callApi("Để em suy nghĩ thêm");
     setIsEnd(true);
   };
 
